@@ -1,0 +1,18 @@
+{
+  "name": "nodebots2016",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:ryan": "PARTICLE_DEVICE_NAME=RyanPatrick-Bot-2016 node bot.js",
+    "start:ben": "PARTICLE_DEVICE_NAME=BenCromwell-Bot-2016 node bot.js"
+  },
+  "author": "Ryan Cromwell, Jr",
+  "license": "ISC",
+  "dependencies": {
+    "johnny-five": "^0.9.61",
+    "particle": "^0.1.4",
+    "particle-io": "^0.12.0"
+  }
+}
