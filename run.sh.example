@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /Users/jeannine/maker/nodebots2016
+
+export PARTICLE_TOKEN=
+npm run start:ben

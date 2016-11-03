@@ -1,5 +1,6 @@
 var five = require("johnny-five");
 var Particle = require("particle-io");
+var clear = require("cli-clear");
 
 var board = new five.Board({
   io: new Particle({
@@ -55,18 +56,23 @@ board.on("ready", function() {
   }
 
   function exit() {
+    console.log('');
+    console.log('parking...');
+
     leftWheel.rev(0);
     rightWheel.rev(0);
     setTimeout(process.exit, 1000);
+
+    console.log('bye');
   }
 
   var keyMap = {
-    'up': forward,
-    'down': reverse,
-    'left': left,
-    'right': right,
-    'space': stop,
-    'q': exit
+    'up': { command: forward, instruction: "forward", key: "↑" },
+    'down': { command: reverse, instruction: "back", key: "↓" },
+    'left': { command: left, instruction: "left", key: "←" },
+    'right': { command: right, instruction: "right", key: "→" },
+    'space': { command: stop, instruction: "stop", key: "space" },
+    'q': { command: exit, instruction: "quit", key: "q" },
   };
 
   var stdin = process.stdin;
@@ -76,6 +82,20 @@ board.on("ready", function() {
   stdin.on("keypress", function(chunk, key) {
       if (!key || !keyMap[key.name]) return;
 
-      keyMap[key.name]();
+      keyMap[key.name].command();
   });
+
+
+  clear();
+
+  for(var prop in keyMap) {
+    let key = keyMap[prop].key;
+    let instruction = keyMap[prop].instruction;
+
+    console.log(`${key} ${instruction}`);
+  }
+
+  console.log('');
+  console.log('Drive safe!');
+  console.log('');
 });

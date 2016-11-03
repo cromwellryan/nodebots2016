@@ -11,6 +11,7 @@
   "author": "Ryan Cromwell, Jr",
   "license": "ISC",
   "dependencies": {
+    "cli-clear": "^1.0.4",
     "johnny-five": "^0.9.61",
     "particle": "^0.1.4",
     "particle-io": "^0.12.0"
