@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cd /Users/jeannine/maker/nodebots2016
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
 
 export PARTICLE_TOKEN=
 npm run start:ben
